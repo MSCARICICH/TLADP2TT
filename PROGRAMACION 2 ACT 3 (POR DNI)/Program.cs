@@ -15,7 +15,7 @@ namespace ConsoleApp1
             StreamWriter Grabar;
             StreamReader Leer;
             DateTime FECHA;
-            float SUELDO;
+            float SUELDO;                  //Declaracion de variables
             int DNI;
             string cadena, scont, nombre, apell, dni, fecha, sueldo;
             char opcion;
@@ -26,7 +26,7 @@ namespace ConsoleApp1
                 Console.WriteLine("\n\t      | Base de datos by Martochx |\n", Console.ForegroundColor = ConsoleColor.Cyan);
                 Console.WriteLine("\t=========================================", Console.ForegroundColor = ConsoleColor.Green);
                 Console.WriteLine("\t| 1. Crear un nuevo registro            |", Console.ForegroundColor = ConsoleColor.Blue);
-                Console.WriteLine("\t| 2. Buscar un registro existente       |", Console.ForegroundColor = ConsoleColor.Yellow);
+                Console.WriteLine("\t| 2. Buscar un registro existente       |", Console.ForegroundColor = ConsoleColor.Yellow); //MENU :)
                 Console.WriteLine("\t| 3. Borrar un registro                 |", Console.ForegroundColor = ConsoleColor.Red);
                 Console.WriteLine("\t| 4. Salir                              |", Console.ForegroundColor = ConsoleColor.White);
                 Console.WriteLine("\t=========================================", Console.ForegroundColor = ConsoleColor.Green);
@@ -36,13 +36,13 @@ namespace ConsoleApp1
                     case '1':
                         {
                             Console.Clear();
-                            Console.Write("Numero de personas a registrar: ");
+                            Console.Write("Numero de personas a registrar: "); 
                             scont = Console.ReadLine();
                             if (int.TryParse(scont, out cont) != false)
                             {
 
                             }
-                            else
+                            else                                                        //Cantidad de personas a registrar
                             {
                                 Console.WriteLine("Caracteres no validos...");
                                 break;
@@ -53,7 +53,7 @@ namespace ConsoleApp1
                                     Console.Write("Ingresar nombre: ");
                                     nombre = Console.ReadLine();
                                     Console.Clear();
-                                    Console.Write("Ingresar apellido: ");
+                                    Console.Write("Ingresar apellido: ");                          //INGRESO DE PARAMETROS (nombre, apellido,etc)
                                     apell = Console.ReadLine();
                                     Console.Clear();
                                     Console.Write("Ingresar DNI: ");
@@ -73,7 +73,7 @@ namespace ConsoleApp1
                                     if (float.TryParse(sueldo, out SUELDO) != false)
                                     {
 
-                                    }
+                                    }                                                                      
                                     else
                                     {
                                         Console.WriteLine("Caracteres no validos :v.");
@@ -91,14 +91,14 @@ namespace ConsoleApp1
                                         Console.WriteLine("Caracteres no validos :v.");
                                         break;
                                     }
-                                    Console.WriteLine("\n\nIngrese la primer linea a almacenar en un nuevo documento: ");
+                                    Console.WriteLine("\n\nIngrese un comentario: ");
                                     Console.Write("\n--> ");
                                     cadena = Console.ReadLine();
                                     Archivo = new FileStream(dni + ".txt", FileMode.Create);
                                     Grabar = new StreamWriter(Archivo);
                                     Grabar.WriteLine($"\n\tNombre: {nombre}");
                                     Grabar.WriteLine($"\n\tApellido: {apell}");
-                                    Grabar.WriteLine($"\n\tDNI: {DNI}");
+                                    Grabar.WriteLine($"\n\tDNI: {DNI}");                          //Los parametros se imprimen en forma de lista
                                     Grabar.WriteLine($"\n\tSueldo: {SUELDO} ARS");
                                     Grabar.WriteLine($"\n\tFecha: {FECHA}");
                                     Grabar.WriteLine("\n\tComentario: " + cadena + "\n\n");
@@ -116,7 +116,7 @@ namespace ConsoleApp1
                         Console.Write("Ingresar DNI: ");
                         dni = Console.ReadLine();
                         Console.Clear();
-                        if (File.Exists(dni + ".txt"))
+                        if (File.Exists(dni + ".txt")) //Detectar DNI
                         {
                             Console.WriteLine("\n\tEl DNI ingresado esta asociado al siguiente registro: ", Console.ForegroundColor = ConsoleColor.Blue);
                             Console.WriteLine("\nContenido del archivo:", Console.ForegroundColor = ConsoleColor.Green);
@@ -124,9 +124,9 @@ namespace ConsoleApp1
                             Archivo = new FileStream(dni + ".txt", FileMode.Open, FileAccess.Read);
                             Leer = new StreamReader(Archivo);
                             while (Leer.EndOfStream == false)
-                            {
+                            {                                                                               
                                 cadena = Leer.ReadLine();
-                                Console.WriteLine(cadena, Console.ForegroundColor = ConsoleColor.White);
+                                Console.WriteLine(cadena, Console.ForegroundColor = ConsoleColor.White);     //Imprime los Datos
                             }
                             Console.WriteLine("=====================================================================================", Console.ForegroundColor = ConsoleColor.White);
                             Leer.Close();
@@ -144,7 +144,7 @@ namespace ConsoleApp1
                     {
                         Console.Clear();
                         Console.Write("Ingrese Documento: ");
-                        dni = Console.ReadLine();
+                        dni = Console.ReadLine();                     //Usen la ruta de su programa       //Se detecta el DNI y luego se lo elimina usando la variable dni + ".txt"
                         File.Delete($"D:/Martochx System/C (Lenguaje de programación)/PROGRAMACION 2/PROGRAMACION 2 ACT 3 (POR DNI)/PROGRAMACION 2 ACT 3 (POR DNI)/bin/Debug/{dni + ".txt"}");
                         Console.Clear();
                         Console.WriteLine("\n\tEl Registro se ha eliminado correctamente...", Console.ForegroundColor = ConsoleColor.Yellow);
@@ -154,7 +154,7 @@ namespace ConsoleApp1
                 case '4':
                     {
                         Console.Clear();
-                        Console.WriteLine("\n\tFinalizando el programa...");
+                        Console.WriteLine("\n\tFinalizando el programa..."); //cierra el programa
                         menu = 1;
                         Console.ReadKey();
                         break;
